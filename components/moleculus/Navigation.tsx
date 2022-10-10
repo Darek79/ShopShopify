@@ -3,7 +3,7 @@ import { LogoSVG, SearchIconSVG, UserSVG, ShoppingBagSVG, HamburgerSVG } from 'c
 
 export default function Navigation(): JSX.Element {
     return (
-        <nav className="h-spacing50 w-full flex justify-between items-center bg-white">
+        <nav className="h-spacing50 w-full flex justify-between items-center bg-white defaultPageContentOnGrid">
             <div className="basis-full">
                 <LogoSVG href="/" />
             </div>

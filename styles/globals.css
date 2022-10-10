@@ -5,6 +5,7 @@
 @layer base {
     body {
         -webkit-tap-highlight-color: transparent;
+        font-family: Poppins;
     }
 }
 
@@ -20,5 +21,17 @@
     }
     .aspect1_1 {
         padding-top: 100%;
+    }
+    .defaultPageContentOnGrid {
+        @apply col-start-2 col-span-1;
+    }
+    .title {
+        @apply text-[6vw] leading-tight font-bold uppercase;
+    }
+    .description {
+        @apply text-[5vw] leading-tight;
+    }
+    .pageSplitter {
+        @apply py-10 text-center uppercase;
     }
 }

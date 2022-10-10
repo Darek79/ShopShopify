@@ -10,6 +10,7 @@
     "pretty": "prettier --write \"./**/*.{js,ts,tsx,json}\""
   },
   "dependencies": {
+    "classnames": "^2.3.2",
     "framer-motion": "^7.5.3",
     "mobx": "^6.6.2",
     "mobx-react-lite": "^3.4.0",

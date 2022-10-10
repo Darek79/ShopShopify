@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
@@ -5,6 +6,9 @@ module.exports = {
     content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
     theme: {
         extend: {
+            fontFamily: {
+                Poppins: "'Poppins',serif",
+            },
             screens: {
                 xs: '500px',
             },

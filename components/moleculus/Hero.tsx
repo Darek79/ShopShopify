@@ -1,16 +1,25 @@
-import { Header, ImageWrapped } from 'components';
-import { useState, useEffect, useCallback, useRef, TouchEvent } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Header, LazyMotionWrapper } from 'components';
+import { useState, useCallback, useRef, TouchEvent } from 'react';
+import Image, { StaticImageData } from 'next/image';
+import { motion, AnimatePresence, m } from 'framer-motion';
 import img1 from 'public/bag-slide1.jpg';
 import img2 from 'public/bag-slide2.jpg';
 import img3 from 'public/bag-slide3.jpg';
-import { sliderVariant, transitionSlider } from 'Variants/variants';
+import { sliderVariant, transitionSlider, headerVariant } from 'Variants/variants';
 // interface HeroI{
 
 // }
+interface ImageArrayI {
+    img: StaticImageData;
+    title?: string;
+    description?: string;
+}
 
-const imageArray = [img1, img2, img3];
+const imageArray: ImageArrayI[] = [
+    { img: img1, title: 'Lorem ipsum dolor', description: 'Duis aliquet lorem justo, quis feugiat velit' },
+    { img: img2, title: 'Proin malesuada facilisis', description: 'Nunc iaculis viverra ante' },
+    { img: img3, title: 'Quisque dolor purus', description: 'Vivamus auctor viverra nisl vitae' },
+];
 
 export default function Hero(): JSX.Element {
     const [state, setState] = useState<number>(1);
@@ -43,14 +52,14 @@ export default function Hero(): JSX.Element {
     }, [forward, backward]);
 
     return (
-        <div className="overflow-hidden max-w-screen-2xl">
+        <div className="overflow-hidden max-w-screen-2xl defaultPageContentOnGrid text-pageWhite">
             <div className="relative aspect1_1 xs:aspect21_9">
                 <AnimatePresence initial={false} custom={useRefDirection.current}>
                     <motion.div
                         onTouchStart={touchMoveStart}
                         onTouchMove={touchMoveEnd}
                         onTouchEnd={touchEnd}
-                        key={imageArray[state].src}
+                        key={imageArray[state].img.src}
                         custom={useRefDirection.current}
                         variants={sliderVariant}
                         initial="enter"
@@ -62,42 +71,62 @@ export default function Hero(): JSX.Element {
                         <div className="relative w-full aspect1_1 xs:aspect21_9">
                             <Image
                                 alt="slider_image"
-                                src={imageArray[state]}
+                                src={imageArray[state].img}
                                 layout="fill"
                                 objectFit="cover"
                                 objectPosition="center"
                             />
                         </div>
                     </motion.div>
-                    <div className="absolute hidden md:flex justify-between top-[calc(50%-10px)] w-full z-10">
-                        <button
-                            type="button"
-                            className="border-b-2 border-l-2 w-8 h-8 rotate-45 translate-x-3 md:translate-x-6"
-                            onClick={backward}
-                        />
-                        <button
-                            type="button"
-                            className="border-t-2 border-r-2 w-8 h-8 rotate-45 -translate-x-3 md:-translate-x-6"
-                            onClick={forward}
-                        />
-                    </div>
+                </AnimatePresence>
+                <div className="absolute hidden md:flex justify-between top-[calc(50%-10px)] w-full z-10">
+                    <button
+                        type="button"
+                        className="border-b-2 border-l-2 w-8 h-8 rotate-45 translate-x-3 md:translate-x-6"
+                        onClick={backward}
+                    />
+                    <button
+                        type="button"
+                        className="border-t-2 border-r-2 w-8 h-8 rotate-45 -translate-x-3 md:-translate-x-6"
+                        onClick={forward}
+                    />
+                </div>
+                <AnimatePresence>
+                    <LazyMotionWrapper>
+                        <m.article
+                            variants={headerVariant}
+                            initial="enter"
+                            animate="center"
+                            transition={transitionSlider}
+                            exit="exit"
+                            className="absolute bottom-12 z-20 flex w-full justify-center pointer-events-none"
+                            key={imageArray[state].title}
+                        >
+                            <Header
+                                className="text-center"
+                                h2Style="title"
+                                pStyle="description"
+                                h2Content={imageArray[state].title}
+                                pContent={imageArray[state].description}
+                            />
+                        </m.article>
+                    </LazyMotionWrapper>
                 </AnimatePresence>
                 <div className="absolute bottom-[20px] bg-inherit w-full h-[20px] z-10">
-                    <>{console.log(state)}</>
                     <div className="flex gap-3 items-center justify-center h-full">
                         {imageArray.map((el, i) => {
                             if (state === i) {
                                 return (
                                     <div
-                                        key={imageArray[i].src}
-                                        className="border-white bg-white border-2 w-5 h-5 rounded-full"
+                                        key={imageArray[i].img.src}
+                                        className="border-white bg-white border-2 w-4 h-4 rounded-full"
                                     ></div>
                                 );
                             } else {
                                 return (
                                     <div
-                                        key={imageArray[i].src}
-                                        className="border-white border-2 w-5 h-5 rounded-full"
+                                        key={imageArray[i].img.src}
+                                        className="border-white border-2 w-4 h-4 rounded-full"
                                     ></div>
                                 );
                             }
