@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
 @layer components {
+    .aspect21_9 {
+        padding-top: 42.85%;
+    }
     .aspect16_9 {
         padding-top: 56.25%;
     }

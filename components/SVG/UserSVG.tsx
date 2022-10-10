@@ -4,9 +4,9 @@ interface UserI extends SVGAttributes<SVGElement> {
     clickFn?: () => void;
 }
 
-export default function UserSVG({ clickFn, ...rest }: UserI): JSX.Element {
+export default function UserSVG({ ...rest }: UserI): JSX.Element {
     return (
-        <svg fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6" viewBox="0 0 24 24" {...rest}>
+        <svg fill="none" stroke="#030807" strokeWidth="1.5" className="w-6 h-6" viewBox="0 0 24 24" {...rest}>
             <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

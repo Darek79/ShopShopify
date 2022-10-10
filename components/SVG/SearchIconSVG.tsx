@@ -7,7 +7,7 @@ export default function SearchIconSVG({ ...rest }: SVGAttributes<SVGElement>): J
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="currentColor"
+            stroke="#030807"
             {...rest}
         >
             <path

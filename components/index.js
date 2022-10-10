@@ -7,6 +7,8 @@ export { default as LazyMotionWrapper } from './atoms/LazyMotionWrapper';
 export { default as Header } from './moleculus/Header';
 export { default as Hero } from './moleculus/Hero';
 export { default as ImageWrapped } from './moleculus/ImageWrapped';
+export { default as PageWrapper } from './moleculus/PageWrapper';
+export { default as Navigation } from './moleculus/Navigation';
 
 //SVG
 export { default as ClosingXSVG } from './SVG/ClosingX';

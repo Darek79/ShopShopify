@@ -9,7 +9,7 @@ module.exports = {
                 xs: '500px',
             },
             colors: {
-                pagePrimary: '#FF651D',
+                pageBlack: '#030807',
                 formBorder: '#D9D9D9',
                 buttonSecondary: '#DEDDFF',
                 pageGreen: '#37C900',
@@ -36,6 +36,7 @@ module.exports = {
                 spacing35: '2.188rem',
                 spacing38: '2.375rem',
                 spacing40: '2.5rem',
+                spacing50: '3.125rem',
                 spacing60: '3.75rem',
                 spacing70: '4.375rem',
                 spacing100: '6.25rem',
@@ -57,8 +58,8 @@ module.exports = {
             },
             gridTemplateColumns: {
                 mobile: '1fr',
-                tablet: '1fr',
-                desktop: 'auto minmax(10%,600px) minmax(10%,840px) auto',
+                tablet: '20px 1fr 20px',
+                desktop: '20% 1fr 20%',
             },
             lineHeight: {
                 title: '3.25rem',

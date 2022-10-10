@@ -9,7 +9,7 @@ export default function Hamburger({ ...rest }: SVGAttributes<SVGElement>): JSX.E
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            stroke="currentColor"
+            stroke="#030807"
             {...rest}
             // onClick={() => mainStore.sidebarHandler()}
         >
