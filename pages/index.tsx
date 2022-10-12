@@ -10,6 +10,7 @@ import {
     PageSplitter,
     Card,
     ContentSplitter,
+    ImageSlider,
 } from 'components';
 // import { createClient } from 'next-sanity';
 
@@ -31,21 +32,57 @@ const Home: NextPage = () => {
             <Sidebar />
             <ScrolledNavigation />
             <Navigation />
-            <Hero />
-            <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
-            <ContentSplitter>
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-            </ContentSplitter>
-            <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
-            <ContentSplitter>
-                <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-            </ContentSplitter>
-
-            {/* <div className="h-[200vh]"></div> */}
+            <main className="max-w-screen-2xl w-full defaultPageContentOnGrid overflow-hidden">
+                <Hero />
+                <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
+                <ContentSplitter className="contentSplitter">
+                    <CategoryCard
+                        href="#"
+                        imageWrapperClasses="categoryCardProduct"
+                        headerPositionClasses="bottom-12 w-full"
+                    />
+                    <CategoryCard
+                        href="#"
+                        imageWrapperClasses="categoryCardProduct"
+                        headerPositionClasses="bottom-12 w-full"
+                    />
+                    <CategoryCard
+                        href="#"
+                        imageWrapperClasses="categoryCardProduct"
+                        headerPositionClasses="bottom-12 w-full"
+                    />
+                </ContentSplitter>
+                <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
+                <ContentSplitter className="contentSplitter">
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                </ContentSplitter>
+                <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
+                <ContentSplitter className="grid grid-rows-5 md:grid-cols-8 md:grid-rows-2 overflow-hidden">
+                    <CategoryCard
+                        href="#"
+                        className="row-start-1 row-end-2 md:col-start-1 md:col-span-4 md:row-span-2"
+                        imageWrapperClasses="aspect16_9"
+                        objectPosition="top"
+                        headerPositionClasses="left-4 bottom-2"
+                    />
+                    <CategoryCard
+                        href="#"
+                        className="row-start-2 row-end-4 py-4 md:py-0 md:col-start-5 md:col-span-2 md:row-start-1 md:row-end-3"
+                        imageWrapperClasses="h-full"
+                        headerPositionClasses="left-4 bottom-2"
+                    />
+                    <CategoryCard
+                        href="#"
+                        className="row-start-4 row-end-6 md:col-start-7 md:col-span-2 md:row-start-1 md:row-end-3"
+                        imageWrapperClasses="h-full"
+                        headerPositionClasses="left-4 bottom-2"
+                    />
+                </ContentSplitter>
+                <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
+                <ImageSlider />
+            </main>
         </PageWrapper>
     );
 };

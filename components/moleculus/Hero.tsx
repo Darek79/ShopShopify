@@ -52,7 +52,7 @@ export default function Hero(): JSX.Element {
     }, [forward, backward]);
 
     return (
-        <div className="overflow-hidden max-w-screen-2xl defaultPageContentOnGrid text-pageWhite">
+        <div className="overflow-hidden text-pageWhite">
             <div className="relative aspect1_1 xs:aspect21_9">
                 <AnimatePresence initial={false} custom={useRefDirection.current}>
                     <motion.div

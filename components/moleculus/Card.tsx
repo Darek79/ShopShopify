@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { memo } from 'react';
 import type { HTMLAttributes } from 'react';
 import type { HeaderI } from './Header';
 import Link from 'next/link';
@@ -10,12 +11,12 @@ interface CardInterface extends HTMLAttributes<HTMLDivElement> {
 
 type CardI = CardInterface & HeaderI;
 
-export default function Card({ h2Content, pContent }: CardI): JSX.Element {
+export default memo(function Card({ h2Content, pContent, href }: CardI): JSX.Element {
     return (
-        <Link href="#">
+        <Link href={href}>
             <a>
-                <div className="text-center">
-                    <ImageWrapped className="relative aspect6_9 mb-4">
+                <div className="text-center w-full">
+                    <ImageWrapped className="w-full relative aspect6_9 mb-4">
                         <Image src={pulli} alt="product_image" layout="fill" objectFit="cover" />
                     </ImageWrapped>
                     <Header className="uppercase leading-loose" h2Content={h2Content} pContent={`$${pContent}`} />
@@ -23,4 +24,4 @@ export default function Card({ h2Content, pContent }: CardI): JSX.Element {
             </a>
         </Link>
     );
-}
+});

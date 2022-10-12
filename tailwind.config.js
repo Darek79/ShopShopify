@@ -63,7 +63,7 @@ module.exports = {
             gridTemplateColumns: {
                 mobile: '1fr',
                 tablet: '20px 1fr 20px',
-                desktop: '20% 1fr 20%',
+                desktop: '10% 1fr 10%',
             },
             lineHeight: {
                 title: '3.25rem',

@@ -15,6 +15,7 @@ export { default as CategoryCard } from './moleculus/CategoryCard';
 export { default as PageSplitter } from './moleculus/PageSplitter';
 export { default as ContentSplitter } from './moleculus/ContentSplitter';
 export { default as Card } from './moleculus/Card';
+export { default as ImageSlider } from './moleculus/ImageSlider';
 
 //SVG
 export { default as ClosingXSVG } from './SVG/ClosingX';
