@@ -39,17 +39,17 @@ const Home: NextPage = () => {
                     <CategoryCard
                         href="#"
                         imageWrapperClasses="categoryCardProduct"
-                        headerPositionClasses="bottom-12 w-full"
+                        headerPositionClasses="bottom-5 w-full"
                     />
                     <CategoryCard
                         href="#"
                         imageWrapperClasses="categoryCardProduct"
-                        headerPositionClasses="bottom-12 w-full"
+                        headerPositionClasses="bottom-5 w-full"
                     />
                     <CategoryCard
                         href="#"
                         imageWrapperClasses="categoryCardProduct"
-                        headerPositionClasses="bottom-12 w-full"
+                        headerPositionClasses="bottom-5 w-full"
                     />
                 </ContentSplitter>
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />

@@ -1,4 +1,4 @@
-import { Header, LazyMotionWrapper } from 'components';
+import { Header, LazyMotionWrapper, SliderNavigationButtons } from 'components';
 import { useState, useCallback, useRef, TouchEvent } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion, AnimatePresence, m } from 'framer-motion';
@@ -75,22 +75,12 @@ export default function Hero(): JSX.Element {
                                 layout="fill"
                                 objectFit="cover"
                                 objectPosition="center"
+                                priority={true}
                             />
                         </div>
                     </motion.div>
                 </AnimatePresence>
-                <div className="absolute hidden md:flex justify-between top-[calc(50%-10px)] w-full z-10">
-                    <button
-                        type="button"
-                        className="border-b-2 border-l-2 w-8 h-8 rotate-45 translate-x-3 md:translate-x-6"
-                        onClick={backward}
-                    />
-                    <button
-                        type="button"
-                        className="border-t-2 border-r-2 w-8 h-8 rotate-45 -translate-x-3 md:-translate-x-6"
-                        onClick={forward}
-                    />
-                </div>
+                <SliderNavigationButtons backward={backward} forward={forward} />
                 <AnimatePresence>
                     <LazyMotionWrapper>
                         <m.article

@@ -16,6 +16,12 @@ export { default as PageSplitter } from './moleculus/PageSplitter';
 export { default as ContentSplitter } from './moleculus/ContentSplitter';
 export { default as Card } from './moleculus/Card';
 export { default as ImageSlider } from './moleculus/ImageSlider';
+export { default as SliderNavigationButtons } from './moleculus/SliderNavigationButtons';
+export { default as NavigationCategory } from './moleculus/NavigationCategory';
+
+//Organism
+
+export { default as Page } from './organism/Page';
 
 //SVG
 export { default as ClosingXSVG } from './SVG/ClosingX';
