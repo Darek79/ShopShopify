@@ -1,9 +1,12 @@
 import { Navigation } from 'components';
 import { debounced } from 'utils/debounce';
 import { useEffect, useMemo, useCallback, useRef, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import className from 'classnames';
+import useStore from 'Mobx/context/storeContext';
 
-export default function ScrolledNavigation(): JSX.Element {
+function ScrolledNavigation(): JSX.Element {
+    const { mainStore } = useStore();
     const timeRef = useRef<number>(0);
     const [state, setState] = useState<boolean>(false);
 
@@ -16,15 +19,16 @@ export default function ScrolledNavigation(): JSX.Element {
         if (window.scrollY > 250 && timeRef.current - window.scrollY < 0) {
             setState(true);
         }
-        if (window.scrollY > 250 && timeRef.current - window.scrollY > 0) {
+        if (window.scrollY > 250 && timeRef.current - window.scrollY > 0 && !mainStore.isScrolling) {
             setState(false);
         }
-    }, [actualScroll]);
+    }, [actualScroll, mainStore.isScrolling]);
 
     const handler = useMemo(() => debounced(checkScroll, 100), [checkScroll]);
 
     const wrapperClasses = className({
-        'fixed left-0 top-0 w-full px-5 transition-all duration-500 z-50 shadow-xl': true,
+        'fixed left-0 top-0 w-full px-5 md:px-0 transition-all duration-500 z-50 grid grid-cols-desktop justify-items-center bg-pageWhite':
+            true,
         '-translate-y-full': !state,
         'translate-y-0': state,
     });
@@ -35,9 +39,12 @@ export default function ScrolledNavigation(): JSX.Element {
         }
         return () => window.removeEventListener('scroll', handler);
     }, [handler]);
+
     return (
         <div className={wrapperClasses}>
             <Navigation />
         </div>
     );
 }
+
+export default observer(ScrolledNavigation);
