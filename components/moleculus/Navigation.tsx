@@ -7,7 +7,7 @@ const categoryPages = ['category', 'category', 'category', 'category', 'category
 export default memo(function Navigation(): JSX.Element {
     return (
         <>
-            <nav className="h-spacing50 w-full flex justify-between items-center bg-pageWhite defaultPageContentOnGrid">
+            <nav className="h-spacing50 w-full flex justify-between items-center bg-pageWhite defaultPageContentOnGrid max-w-screen-2xl">
                 <div className="basis-full">
                     <LogoSVG href="/" />
                 </div>

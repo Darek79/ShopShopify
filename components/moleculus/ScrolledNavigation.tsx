@@ -27,7 +27,7 @@ function ScrolledNavigation(): JSX.Element {
     const handler = useMemo(() => debounced(checkScroll, 100), [checkScroll]);
 
     const wrapperClasses = className({
-        'fixed left-0 top-0 w-full px-5 md:px-0 transition-all duration-500 z-50 shadow-xl grid grid-cols-desktop bg-pageWhite':
+        'fixed left-0 top-0 w-full px-5 md:px-0 transition-all duration-500 z-50 grid grid-cols-desktop justify-items-center bg-pageWhite':
             true,
         '-translate-y-full': !state,
         'translate-y-0': state,
@@ -39,6 +39,7 @@ function ScrolledNavigation(): JSX.Element {
         }
         return () => window.removeEventListener('scroll', handler);
     }, [handler]);
+
     return (
         <div className={wrapperClasses}>
             <Navigation />
