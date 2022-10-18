@@ -40,8 +40,11 @@
     .pageSplitter {
         @apply py-10 text-center uppercase;
     }
-    .contentSplitter {
+    .contentSplitter3 {
         @apply grid md:grid-cols-3 gap-4 py-4;
+    }
+    .contentSplitter8 {
+        @apply grid md:grid-cols-4 md:grid-rows-2 gap-4 py-4;
     }
     .categoryCardProduct {
         @apply relative aspect1_1;

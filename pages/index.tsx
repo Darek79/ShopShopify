@@ -73,7 +73,18 @@ const Home: NextPage<Data> = ({ products }) => {
             <main className="max-w-screen-2xl w-full defaultPageContentOnGrid overflow-hidden">
                 <Hero />
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
-                <ContentSplitter className="contentSplitter">
+                <ContentSplitter className="contentSplitter8">
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                </ContentSplitter>
+                <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
+                <ContentSplitter className="contentSplitter3">
                     <CategoryCard
                         href="#"
                         imageWrapperClasses="categoryCardProduct"
@@ -92,7 +103,7 @@ const Home: NextPage<Data> = ({ products }) => {
                 </ContentSplitter>
                 <>{console.log(products)}</>
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
-                <ContentSplitter className="contentSplitter">
+                <ContentSplitter className="contentSplitter3">
                     <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
                     <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
                     <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
