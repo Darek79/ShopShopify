@@ -89,7 +89,7 @@ export default function Hero(): JSX.Element {
                             animate="center"
                             transition={transitionSlider}
                             exit="exit"
-                            className="absolute bottom-12 z-20 flex w-full justify-center pointer-events-none"
+                            className="absolute bottom-6 md:bottom-12 z-20 flex w-full justify-center pointer-events-none"
                             key={imageArray[state].title}
                         >
                             <Header
@@ -102,21 +102,21 @@ export default function Hero(): JSX.Element {
                         </m.article>
                     </LazyMotionWrapper>
                 </AnimatePresence>
-                <div className="absolute bottom-[20px] bg-inherit w-full h-[20px] z-10">
+                <div className="absolute bottom-[10px] bg-inherit w-full h-[20px] z-10">
                     <div className="flex gap-3 items-center justify-center h-full">
                         {imageArray.map((el, i) => {
                             if (state === i) {
                                 return (
                                     <div
                                         key={imageArray[i].img.src}
-                                        className="border-white bg-white border-2 w-4 h-4 rounded-full"
+                                        className="border-white bg-white border-2 w-2 h-2 rounded-full"
                                     ></div>
                                 );
                             } else {
                                 return (
                                     <div
                                         key={imageArray[i].img.src}
-                                        className="border-white border-2 w-4 h-4 rounded-full"
+                                        className="border-white border-2 w-2 h-2 rounded-full"
                                     ></div>
                                 );
                             }

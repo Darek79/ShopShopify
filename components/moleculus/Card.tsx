@@ -16,7 +16,7 @@ export default memo(function Card({ h2Content, pContent, href }: CardI): JSX.Ele
         <Link href={href}>
             <a>
                 <div className="text-center w-full">
-                    <ImageWrapped className="w-full relative aspect6_9 mb-4">
+                    <ImageWrapped className="w-full relative aspect6_9">
                         <Image src={pulli} alt="product_image" layout="fill" objectFit="cover" />
                     </ImageWrapped>
                     <Header className="uppercase leading-loose" h2Content={h2Content} pContent={`$${pContent}`} />

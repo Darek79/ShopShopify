@@ -1,12 +1,23 @@
 import { memo } from 'react';
+import classname from 'classnames';
 interface SliderNavigationButtonsI {
     forward(): void;
     backward(): void;
+    buttonOnMobile?: boolean;
 }
 
-export default memo(function SliderNavigationButtons({ forward, backward }: SliderNavigationButtonsI): JSX.Element {
+export default memo(function SliderNavigationButtons({
+    forward,
+    backward,
+    buttonOnMobile,
+}: SliderNavigationButtonsI): JSX.Element {
+    const wrapperClasses = classname({
+        'absolute md:flex justify-center top-[calc(50%-10px)] w-full z-10': true,
+        hidden: !buttonOnMobile,
+        block: buttonOnMobile,
+    });
     return (
-        <div className="absolute hidden md:flex justify-center top-[calc(50%-10px)] w-full z-10">
+        <div className={wrapperClasses}>
             <div className="flex justify-between w-full px-3">
                 <div
                     onClick={backward}
