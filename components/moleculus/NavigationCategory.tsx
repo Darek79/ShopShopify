@@ -28,11 +28,11 @@ export default function NavigationCategory({ navigationArr }: NavigationCategory
                                 <p className="uppercase relative text-[0.8rem] text-pageCategory px-2">{el}</p>
                             </Link>
                             <p className="w-full h-[2px] bg-pageCategory transform duration-500 -translate-x-[101%] group-hover:translate-x-0"></p>
-                            <div className="h-0 z-[9999] opacity-0 origin-top transform duration-300 group-hover:opacity-100 group-hover:scale-100 w-full lg:max-w-[calc(100vw-20%-11px)] group-hover:h-[400px] absolute left-0 lg:left-[10%] top-[84px] bg-blue-200">
+                            <div className="h-0 flex z-[9999] opacity-0 origin-top transform duration-300 group-hover:opacity-100 group-hover:scale-100 w-full group-hover:h-[400px] absolute left-0 top-[79px] bg-transparent pointer-events-none">
                                 <div
                                     onMouseOver={hoverOver}
                                     onMouseLeave={hoverOverOff}
-                                    className="p-5 h-full w-full hidden group-hover:block"
+                                    className="p-5 h-full m-auto bg-red-200 w-[1000px] hidden group-hover:block pointer-events-auto"
                                 >
                                     TEST{`${i}`}
                                 </div>
@@ -45,3 +45,6 @@ export default function NavigationCategory({ navigationArr }: NavigationCategory
 }
 // hidden group-hover:block
 // top-[76px]
+{
+    /* <div className="h-0 z-[9999] opacity-0 origin-top transform duration-300 group-hover:opacity-100 group-hover:scale-100 w-full lg:max-w-[1000px] group-hover:h-[400px] absolute left-0 lg:left-[10%] top-[84px] bg-blue-200"> */
+}
