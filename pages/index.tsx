@@ -11,17 +11,55 @@ import {
     Card,
     ContentSplitter,
     ImageSlider,
+    Footer,
 } from 'components';
-// import { createClient } from 'next-sanity';
+import Shopify, { RequestReturn } from '@shopify/shopify-api';
 
-// const client = createClient({
-//     projectId: '3zonnd0w',
-//     dataset: 'production',
-//     apiVersion: '2022-08-28',
-//     useCdn: false,
-// });
+export interface PRODUCT {
+    data: Data;
+}
+export interface Data {
+    products: Products;
+}
+export interface Products {
+    edges?: EdgesEntity[];
+}
+export interface EdgesEntity {
+    node: Node;
+}
+export interface Node {
+    id: string;
+    title: string;
+    images: Images;
+    priceRange: PriceRange;
+}
+export interface Images {
+    nodes?: NodesEntity[];
+}
+export interface NodesEntity {
+    url: string;
+    height: number;
+    width: number;
+    altText?: null;
+    id: string;
+}
+export interface PriceRange {
+    maxVariantPrice: MaxVariantPrice;
+}
+export interface MaxVariantPrice {
+    amount: string;
+    currencyCode: string;
+}
 
-const Home: NextPage = () => {
+// // // Load the access token as per instructions above
+// const storefrontAccessToken = 'd2f2a6faf86c55e8e53fa6d10dc0f12c';
+// // // Shop from which we're fetching data
+// const shop = 'dkdevtechstore.myshopify.com';
+
+// // // StorefrontClient takes in the shop url and the Storefront Access Token for that shop.
+// const storefrontClient = new Shopify.Clients.Storefront(shop, storefrontAccessToken);
+
+const Home: NextPage<Data> = ({ products }) => {
     return (
         <PageWrapper>
             <Head>
@@ -52,6 +90,7 @@ const Home: NextPage = () => {
                         headerPositionClasses="bottom-5 w-full"
                     />
                 </ContentSplitter>
+                <>{console.log(products)}</>
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
                 <ContentSplitter className="contentSplitter">
                     <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
@@ -65,30 +104,71 @@ const Home: NextPage = () => {
                         className="row-start-1 row-end-2 md:col-start-1 md:col-span-4 md:row-span-2"
                         imageWrapperClasses="aspect16_9"
                         objectPosition="top"
-                        headerPositionClasses="left-4 bottom-2"
+                        headerPositionClasses="bottom-3 w-full"
                     />
                     <CategoryCard
                         href="#"
                         className="row-start-2 row-end-4 py-4 md:py-0 md:col-start-5 md:col-span-2 md:row-start-1 md:row-end-3"
                         imageWrapperClasses="h-full"
-                        headerPositionClasses="left-4 bottom-2"
+                        headerPositionClasses="bottom-3 w-full"
                     />
                     <CategoryCard
                         href="#"
                         className="row-start-4 row-end-6 md:col-start-7 md:col-span-2 md:row-start-1 md:row-end-3"
                         imageWrapperClasses="h-full"
-                        headerPositionClasses="left-4 bottom-2"
+                        headerPositionClasses="bottom-3 w-full"
                     />
                 </ContentSplitter>
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
-                <ImageSlider />
+                <ImageSlider buttonOnMobile />
             </main>
+            <footer className="max-w-screen-2xl w-full defaultPageContentOnGrid pt-10">
+                <Footer />
+            </footer>
         </PageWrapper>
     );
 };
 
 export default Home;
 
+export async function getStaticProps() {
+    // Use client.query and pass your query as `data`
+    // const {
+    //     body: {
+    //         data: { products },
+    //     },
+    // }: RequestReturn<PRODUCT> = await storefrontClient.query({
+    //     data: `query Home {
+    //         products(first: 6) {
+    //       edges {
+    //         node {
+    //           id
+    //           title
+    //           images(first:1){
+    //             nodes{
+    //               url
+    //               height
+    //               width
+    //               altText
+    //               id
+    //             }
+    //           }
+    //           priceRange {
+    //             maxVariantPrice {
+    //               amount
+    //               currencyCode
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }`,
+    // });
+
+    return {
+        props: { products: {} },
+    };
+}
 // export async function getStaticProps() {
 //     const article = await client.fetch(`*[_type == "article"]`);
 //     console.log(article, 'data');

@@ -26,13 +26,13 @@
         @apply col-start-2 col-span-1;
     }
     .title {
-        @apply text-[6vw] md:text-[3rem] leading-tight font-bold uppercase;
+        @apply text-[6vw] xs:text-[2rem] leading-tight font-bold uppercase;
     }
     .description {
-        @apply text-[5vw] md:text-[1.1rem] leading-tight;
+        @apply text-[5vw] xs:text-[0.9rem] leading-tight;
     }
     .titleCard {
-        @apply text-[6vw] md:text-[1.3rem] lg:text-[1.5rem] xl:text-[2em] leading-tight font-bold uppercase;
+        @apply text-[6vw] md:text-[1.1rem] lg:text-[1.2rem] xl:text-[1.3rem] leading-tight font-bold uppercase;
     }
     .descriptionCard {
         @apply text-[5vw] md:text-[1.1rem] leading-tight;
@@ -45,6 +45,9 @@
     }
     .categoryCardProduct {
         @apply relative aspect1_1;
+    }
+    .transformDefault {
+        @apply transform duration-300;
     }
 }
 /* grid md:grid-row-1 md:grid-cols-3 gap-4 py-4; */

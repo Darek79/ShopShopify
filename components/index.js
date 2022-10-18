@@ -18,6 +18,8 @@ export { default as Card } from './moleculus/Card';
 export { default as ImageSlider } from './moleculus/ImageSlider';
 export { default as SliderNavigationButtons } from './moleculus/SliderNavigationButtons';
 export { default as NavigationCategory } from './moleculus/NavigationCategory';
+export { default as FooterItem } from './moleculus/FooterItem';
+export { default as Footer } from './moleculus/Footer';
 
 //Organism
 
@@ -30,3 +32,4 @@ export { default as LogoSVG } from './SVG/LogoSVG';
 export { default as SearchIconSVG } from './SVG/SearchIconSVG';
 export { default as UserSVG } from './SVG/UserSVG';
 export { default as ShoppingBagSVG } from './SVG/ShoppingBagSVG';
+export { default as ChevronDownSVG } from './SVG/ChevronDownSVG';

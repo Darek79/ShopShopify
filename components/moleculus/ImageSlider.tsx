@@ -4,7 +4,11 @@ import { m, AnimatePresence, useSpring } from 'framer-motion';
 
 const slideArray = [10, 20, 30, 40, 50, 60, 70, 80];
 
-export default function ImageSlider(): JSX.Element {
+interface ImageSliderI {
+    buttonOnMobile?: boolean;
+}
+
+export default function ImageSlider({ buttonOnMobile }: ImageSliderI): JSX.Element {
     const x = useSpring(0);
     const [state, setState] = useState<number>(0);
     const slideNumberRef = useRef<number>(0);
@@ -44,7 +48,7 @@ export default function ImageSlider(): JSX.Element {
                     </m.div>
                 </LazyMotionWrapper>
             </AnimatePresence>
-            <SliderNavigationButtons forward={forward} backward={backward} />
+            <SliderNavigationButtons buttonOnMobile={buttonOnMobile} forward={forward} backward={backward} />
         </div>
     );
 }
