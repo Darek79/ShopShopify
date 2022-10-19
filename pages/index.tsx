@@ -13,53 +13,17 @@ import {
     ImageSlider,
     Footer,
 } from 'components';
-import Shopify, { RequestReturn } from '@shopify/shopify-api';
+import { storefrontClient } from './../ShopifyClient';
+import type { RequestReturn } from '@shopify/shopify-api';
+import { PRODUCT, EdgesEntity } from 'Types/Products';
 
-export interface PRODUCT {
-    data: Data;
-}
-export interface Data {
-    products: Products;
-}
-export interface Products {
-    edges?: EdgesEntity[];
-}
-export interface EdgesEntity {
-    node: Node;
-}
-export interface Node {
-    id: string;
-    title: string;
-    images: Images;
-    priceRange: PriceRange;
-}
-export interface Images {
-    nodes?: NodesEntity[];
-}
-export interface NodesEntity {
-    url: string;
-    height: number;
-    width: number;
-    altText?: null;
-    id: string;
-}
-export interface PriceRange {
-    maxVariantPrice: MaxVariantPrice;
-}
-export interface MaxVariantPrice {
-    amount: string;
-    currencyCode: string;
+interface HomepageI {
+    topProducts: EdgesEntity[];
+    middleProducts: EdgesEntity[];
+    sliderProducts: EdgesEntity[];
 }
 
-// // // Load the access token as per instructions above
-// const storefrontAccessToken = 'd2f2a6faf86c55e8e53fa6d10dc0f12c';
-// // // Shop from which we're fetching data
-// const shop = 'dkdevtechstore.myshopify.com';
-
-// // // StorefrontClient takes in the shop url and the Storefront Access Token for that shop.
-// const storefrontClient = new Shopify.Clients.Storefront(shop, storefrontAccessToken);
-
-const Home: NextPage<Data> = ({ products }) => {
+const Home: NextPage<HomepageI> = ({ topProducts, middleProducts, sliderProducts }) => {
     return (
         <PageWrapper>
             <Head>
@@ -74,15 +38,20 @@ const Home: NextPage<Data> = ({ products }) => {
                 <Hero />
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
                 <ContentSplitter className="contentSplitter8">
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    {topProducts &&
+                        topProducts.map(el => (
+                            <Card
+                                key={el.node.images.nodes[0].id}
+                                imgSrc={el.node.images.nodes[0].url}
+                                imgAlt={el.node.images.nodes[0].altText}
+                                className=""
+                                href={el.node.tags[0]}
+                                h2Content={el.node.title}
+                                pContent={el.node.priceRange.maxVariantPrice.amount}
+                            />
+                        ))}
                 </ContentSplitter>
+                <>{console.log(topProducts, middleProducts, sliderProducts)}</>
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
                 <ContentSplitter className="contentSplitter3">
                     <CategoryCard
@@ -101,12 +70,20 @@ const Home: NextPage<Data> = ({ products }) => {
                         headerPositionClasses="bottom-5 w-full"
                     />
                 </ContentSplitter>
-                <>{console.log(products)}</>
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
                 <ContentSplitter className="contentSplitter3">
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
-                    <Card className="" href="#" h2Content="Crew neck sweater" pContent="50" />
+                    {middleProducts &&
+                        middleProducts.map(el => (
+                            <Card
+                                key={el.node.images.nodes[0].id}
+                                imgSrc={el.node.images.nodes[0].url}
+                                imgAlt={el.node.images.nodes[0].altText}
+                                className=""
+                                href={el.node.tags[0]}
+                                h2Content={el.node.title}
+                                pContent={el.node.priceRange.maxVariantPrice.amount}
+                            />
+                        ))}
                 </ContentSplitter>
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
                 <ContentSplitter className="grid grid-rows-5 md:grid-cols-8 md:grid-rows-2 overflow-hidden">
@@ -131,7 +108,7 @@ const Home: NextPage<Data> = ({ products }) => {
                     />
                 </ContentSplitter>
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
-                <ImageSlider buttonOnMobile />
+                <ImageSlider buttonOnMobile slideArray={sliderProducts} />
             </main>
             <footer className="max-w-screen-2xl w-full defaultPageContentOnGrid pt-10">
                 <Footer />
@@ -144,40 +121,43 @@ export default Home;
 
 export async function getStaticProps() {
     // Use client.query and pass your query as `data`
-    // const {
-    //     body: {
-    //         data: { products },
-    //     },
-    // }: RequestReturn<PRODUCT> = await storefrontClient.query({
-    //     data: `query Home {
-    //         products(first: 6) {
-    //       edges {
-    //         node {
-    //           id
-    //           title
-    //           images(first:1){
-    //             nodes{
-    //               url
-    //               height
-    //               width
-    //               altText
-    //               id
-    //             }
-    //           }
-    //           priceRange {
-    //             maxVariantPrice {
-    //               amount
-    //               currencyCode
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }`,
-    // });
-
+    const {
+        body: {
+            data: { products },
+        },
+    }: RequestReturn<PRODUCT> = await storefrontClient.query({
+        data: `query Home {
+            products(first: 20) {
+          edges {
+            node {
+              id
+              title
+              tags
+              images(first:1){
+                nodes{
+                  url
+                  height
+                  width
+                  altText
+                  id
+                }
+              }
+              priceRange {
+                maxVariantPrice {
+                  amount
+                  currencyCode
+                }
+              }
+            }
+          }
+        }
+      }`,
+    });
+    const topProducts: EdgesEntity[] = products.edges?.slice(0, 8);
+    const middleProducts: EdgesEntity[] = products.edges?.slice(9, 12);
+    const sliderProducts: EdgesEntity[] = products.edges?.slice(12, 20);
     return {
-        props: { products: {} },
+        props: { topProducts: topProducts, middleProducts: middleProducts, sliderProducts: sliderProducts },
     };
 }
 // export async function getStaticProps() {

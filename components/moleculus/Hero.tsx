@@ -2,6 +2,7 @@ import { Header, LazyMotionWrapper, SliderNavigationButtons } from 'components';
 import { useState, useCallback, useRef, TouchEvent } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion, AnimatePresence, m } from 'framer-motion';
+import Link from 'next/link';
 import img1 from 'public/bag-slide1.jpg';
 import img2 from 'public/bag-slide2.jpg';
 import img3 from 'public/bag-slide3.jpg';
@@ -52,7 +53,7 @@ export default function Hero(): JSX.Element {
     }, [forward, backward]);
 
     return (
-        <div className="overflow-hidden text-pageWhite">
+        <div className="overflow-hidden text-pageWhite cursor-pointer">
             <div className="relative aspect1_1 xs:aspect21_9">
                 <AnimatePresence initial={false} custom={useRefDirection.current}>
                     <motion.div
@@ -68,16 +69,18 @@ export default function Hero(): JSX.Element {
                         exit="exit"
                         className="absolute top-0 w-full h-full"
                     >
-                        <div className="relative w-full aspect1_1 xs:aspect21_9">
-                            <Image
-                                alt="slider_image"
-                                src={imageArray[state].img}
-                                layout="fill"
-                                objectFit="cover"
-                                objectPosition="center"
-                                priority={true}
-                            />
-                        </div>
+                        <Link href="/category/main">
+                            <div className="relative w-full aspect1_1 xs:aspect21_9">
+                                <Image
+                                    alt="slider_image"
+                                    src={imageArray[state].img}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                    priority={true}
+                                />
+                            </div>
+                        </Link>
                     </motion.div>
                 </AnimatePresence>
                 <SliderNavigationButtons backward={backward} forward={forward} />
