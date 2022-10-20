@@ -1,11 +1,14 @@
 import { SVGAttributes } from 'react';
+import { observer } from 'mobx-react-lite';
+import useStore from 'Mobx/context/storeContext';
 // interface ShoppingBagI {}
 
-export default function ShoppingBagSVG({ ...rest }: SVGAttributes<SVGElement>): JSX.Element {
+function ShoppingBagSVG({ ...rest }: SVGAttributes<SVGElement>): JSX.Element {
+    const { basketStore } = useStore();
     return (
         <div className="relative">
             <div className="absolute rounded-full bg-pageBlack w-5 h-5 left-4 top-1 text-pageWhite text-center">
-                <p className="translate-y-[1px] text-sm">1</p>
+                <p className="translate-y-[1px] text-sm">{basketStore.productsArray.length}</p>
             </div>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -25,3 +28,5 @@ export default function ShoppingBagSVG({ ...rest }: SVGAttributes<SVGElement>): 
         </div>
     );
 }
+
+export default observer(ShoppingBagSVG);

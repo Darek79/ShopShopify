@@ -52,5 +52,8 @@
     .transformDefault {
         @apply transform duration-300;
     }
+    .checkoutButton {
+        @apply text-pageBlack w-full py-3 text-center transformDefault border-2 border-pageBlack;
+    }
 }
 /* grid md:grid-row-1 md:grid-cols-3 gap-4 py-4; */

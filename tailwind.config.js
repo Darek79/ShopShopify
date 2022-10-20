@@ -15,6 +15,8 @@ module.exports = {
             colors: {
                 pageBlack: '#030807',
                 pageCategory: '#333333',
+                cartBtnHover: '#fe877b',
+                checkMark: '#74B83D',
                 formBorder: '#D9D9D9',
                 buttonSecondary: '#DEDDFF',
                 pageGreen: '#37C900',

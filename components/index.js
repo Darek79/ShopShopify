@@ -20,6 +20,7 @@ export { default as SliderNavigationButtons } from './moleculus/SliderNavigation
 export { default as NavigationCategory } from './moleculus/NavigationCategory';
 export { default as FooterItem } from './moleculus/FooterItem';
 export { default as Footer } from './moleculus/Footer';
+export { default as ItemWasAddedToBasket } from './moleculus/ItemWasAddedToBasket';
 
 //Organism
 
@@ -33,3 +34,6 @@ export { default as SearchIconSVG } from './SVG/SearchIconSVG';
 export { default as UserSVG } from './SVG/UserSVG';
 export { default as ShoppingBagSVG } from './SVG/ShoppingBagSVG';
 export { default as ChevronDownSVG } from './SVG/ChevronDownSVG';
+export { default as CheckSVG } from './SVG/CheckSVG';
+export { default as ClockSVG } from './SVG/ClockSVG';
+export { default as HouseSVG } from './SVG/HouseSVG';
