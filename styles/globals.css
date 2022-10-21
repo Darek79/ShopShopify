@@ -55,5 +55,8 @@
     .checkoutButton {
         @apply text-pageBlack w-full py-3 text-center transformDefault border-2 border-pageBlack;
     }
+    .checkoutButtonBasket {
+        @apply text-pageWhite bg-pageBlack w-full md:w-1/3 py-3 text-center transformDefault hover:bg-cartBtnHover;
+    }
 }
 /* grid md:grid-row-1 md:grid-cols-3 gap-4 py-4; */

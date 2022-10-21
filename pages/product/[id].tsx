@@ -89,28 +89,26 @@ const Product: NextPage<{ products: Node }> = ({ products }) => {
                             </div>
 
                             <div className="flex gap-2">
-                                <div className="flex bg-slate-200 p-1">
+                                <figure className="flex bg-slate-200 p-1">
                                     <div>
                                         <CheckSVG />
                                     </div>
                                     <p>Free Shipping & Return</p>
-                                </div>
-                                <div className="flex bg-slate-200 p-1">
+                                </figure>
+                                <figure className="flex bg-slate-200 p-1">
                                     <div>
                                         <CheckSVG />
                                     </div>
                                     <p>Money back guarantee</p>
-                                </div>
-                                <div className="flex bg-slate-200 p-1">
+                                </figure>
+                                <figure className="flex bg-slate-200 p-1">
                                     <div>
                                         <CheckSVG />
                                     </div>
                                     <p>Fast & Reliable support</p>
-                                </div>
+                                </figure>
                             </div>
                         </div>
-
-                        <div></div>
                     </div>
                 </div>
             </Page>

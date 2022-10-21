@@ -21,6 +21,11 @@ export { default as NavigationCategory } from './moleculus/NavigationCategory';
 export { default as FooterItem } from './moleculus/FooterItem';
 export { default as Footer } from './moleculus/Footer';
 export { default as ItemWasAddedToBasket } from './moleculus/ItemWasAddedToBasket';
+export { default as SocialmediaBox } from './moleculus/SocialmediaBox';
+export { default as Basket } from './moleculus/Basket';
+export { default as BasketItem } from './moleculus/BasketItem';
+export { default as BasketItemImage } from './moleculus/BasketItemImage';
+export { default as BasketTotalSum } from './moleculus/BasketTotalSum';
 
 //Organism
 
