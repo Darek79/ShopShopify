@@ -3,12 +3,17 @@ import { Node } from 'Types/ProductDetail';
 import { makeAutoObservable, runInAction } from 'mobx';
 
 export interface ProductAmountI {
-    amount: number;
+    quantity: number;
     id: Node['tags'][0];
     price: number;
     imageUrl: ImageProps['src'] | string;
     title: string;
-    gid: string;
+    merchandiseId: string;
+}
+
+export interface LineItems {
+    quantity: number;
+    merchandiseId: string;
 }
 
 export interface BasketI {
@@ -24,13 +29,18 @@ export interface BasketI {
     showProductWasAddedSwitcher(): void;
     addedProductValueIndex: number;
     showProductWasAddedClose(): void;
+    lineItem: LineItems[];
+    getLineItems(): void;
+    start: boolean;
 }
 
 class Basket implements BasketI {
     productsArray: ProductAmountI[] = [];
     totalSumBasket = 0;
     showProductWasAdded = false;
+    start = false;
     addedProductValueIndex = 0;
+    lineItem: LineItems[] = [];
     constructor() {
         makeAutoObservable(this);
     }
@@ -39,12 +49,12 @@ class Basket implements BasketI {
 
         if (objectIndex < 0) {
             this.productsArray.push({
-                amount: 1,
+                quantity: 1,
                 id: val.tags[0],
                 price: Number(val.priceRange.maxVariantPrice.amount),
                 imageUrl: val.featuredImage.url,
                 title: val.title,
-                gid: val.id,
+                merchandiseId: val.variants.edges[0].node.id,
             });
             this.addedProductValueIndex = 0;
             this.showProductWasAdded = true;
@@ -52,7 +62,7 @@ class Basket implements BasketI {
             return null;
         }
         runInAction(() => {
-            this.productsArray[objectIndex].amount += 1;
+            this.productsArray[objectIndex].quantity += 1;
             this.addedProductValueIndex = objectIndex;
             this.calcTotalSum();
             this.showProductWasAdded = true;
@@ -61,33 +71,33 @@ class Basket implements BasketI {
 
     addProductAmount(val: string): void {
         const objectIndex = this.productsArray.findIndex(obj => obj.id === val);
-        console.log(objectIndex, '+');
         if (objectIndex < 0) {
             return;
         }
         runInAction(() => {
-            this.productsArray[objectIndex].amount++;
+            this.productsArray[objectIndex].quantity++;
             this.calcTotalSum();
         });
     }
     lowerProductAmount(val: string): void {
         const objectIndex = this.productsArray.findIndex(obj => obj.id === val);
-        console.log(objectIndex, '-');
-        if (objectIndex < 0 || this.productsArray[objectIndex].amount === 1) {
+        if (objectIndex < 0 || this.productsArray[objectIndex].quantity === 1) {
             return;
         }
         runInAction(() => {
-            this.productsArray[objectIndex].amount--;
+            this.productsArray[objectIndex].quantity--;
             this.calcTotalSum();
         });
     }
     removeOneProduct(val: string) {
         this.productsArray = this.productsArray.filter(el => el.id !== val);
+        if (!this.productsArray.length) {
+            this.totalSumBasket = 0;
+        }
     }
     calcTotalSum() {
-        console.log('total sum');
         this.totalSumBasket = this.productsArray.reduce((acc, prod) => {
-            return acc + prod.price * prod.amount;
+            return acc + prod.price * prod.quantity;
         }, 0);
     }
 
@@ -105,6 +115,22 @@ class Basket implements BasketI {
                 });
             }
         }, 5000);
+    }
+    async getLineItems() {
+        if (!this.start) {
+            runInAction(() => {
+                this.start = true;
+                this.lineItem = this.productsArray.map(el => ({
+                    quantity: el.quantity,
+                    merchandiseId: el.merchandiseId,
+                }));
+            });
+        }
+        setTimeout(() => {
+            runInAction(() => {
+                this.start = false;
+            });
+        }, 1000);
     }
 }
 

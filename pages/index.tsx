@@ -51,7 +51,6 @@ const Home: NextPage<HomepageI> = ({ topProducts, middleProducts, sliderProducts
                             />
                         ))}
                 </ContentSplitter>
-                <>{console.log(topProducts, middleProducts, sliderProducts)}</>
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
                 <ContentSplitter className="contentSplitter3">
                     <CategoryCard
@@ -160,10 +159,3 @@ export async function getStaticProps() {
         props: { topProducts: topProducts, middleProducts: middleProducts, sliderProducts: sliderProducts },
     };
 }
-// export async function getStaticProps() {
-//     const article = await client.fetch(`*[_type == "article"]`);
-//     console.log(article, 'data');
-//     return {
-//         props: { article },
-//     };
-// }

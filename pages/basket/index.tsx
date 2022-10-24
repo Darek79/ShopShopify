@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
+import { Button } from 'components';
 import Head from 'next/head';
 
-import { PageWrapper, Page, Basket, BasketTotalSum, Button } from 'components';
+import { PageWrapper, Page, Basket, BasketTotalSum } from 'components';
 
 const BasketPage: NextPage = () => {
     return (
@@ -21,6 +22,7 @@ const BasketPage: NextPage = () => {
                     <div className="w-full md:w-[90%] flex md:justify-end">
                         <Button className="checkoutButtonBasket mt-5">GO TO CHECKOUT</Button>
                     </div>
+                    {/* <CheckoutRedirectButton /> */}
                 </div>
             </Page>
         </PageWrapper>

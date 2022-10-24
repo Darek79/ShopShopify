@@ -7,7 +7,7 @@ const categoryPages = ['category', 'category', 'category', 'category', 'category
 export default memo(function Navigation(): JSX.Element {
     return (
         <>
-            <nav className="h-fit w-full bg-pageWhite defaultPageContentOnGrid max-w-screen-2xl py-3 md:py-0 md:pt-5 justify-self-center">
+            <nav className="h-fit w-full bg-pageWhite defaultPageContentOnGrid max-w-screen-2xl py-3 md:py-5 justify-self-center">
                 <div className="flex justify-between items-center">
                     <div className="basis-full">
                         <LogoSVG href="/" />
@@ -19,7 +19,7 @@ export default memo(function Navigation(): JSX.Element {
                         <HamburgerSVG className="w-6 h-6 block md:hidden" />
                     </div>
                 </div>
-                <NavigationCategory navigationArr={categoryPages} />
+                {/* <NavigationCategory navigationArr={categoryPages} /> */}
             </nav>
         </>
     );

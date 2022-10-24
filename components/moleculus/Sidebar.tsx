@@ -14,7 +14,6 @@ function Sidebar({ children, ...rest }: HTMLAttributes<HTMLDivElement>): JSX.Ele
 
     return (
         <div className={wrapperClasses}>
-            <>{console.log(mainStore.openSidebar, 'comp')}</>
             <div className="w-full flex justify-end">
                 <ClosingXSVG
                     className="stroke-white w-8 h-8 cursor-pointer"

@@ -44,7 +44,6 @@ export default function Hero(): JSX.Element {
         useRefTouchEnd.current = event.targetTouches[0].clientX;
     }, []);
     const touchEnd = useCallback(() => {
-        console.log('touchEnd', useRefTouchStart.current - useRefTouchEnd.current);
         if (useRefTouchStart.current - useRefTouchEnd.current > 0) {
             forward();
             return null;

@@ -21,7 +21,7 @@ function BasketItem({ productItem }: BasketItemI): JSX.Element {
                     <div className="flex pl-spacing100 gap-2">
                         {/* <p>{el.price}</p> */}
                         {/* <p>{el.amount}</p> */}
-                        <p>${(productItem.price * productItem.amount).toFixed(2)}</p>
+                        <p>${(productItem.price * productItem.quantity).toFixed(2)}</p>
                     </div>
                     <ImageWrapped
                         onClick={() => basketStore.lowerProductAmount(productItem.id)}
@@ -29,7 +29,7 @@ function BasketItem({ productItem }: BasketItemI): JSX.Element {
                     >
                         <Image src={minus} alt="minus" />
                     </ImageWrapped>
-                    <p className="font-bold">{productItem.amount}</p>
+                    <p className="font-bold">{productItem.quantity}</p>
                     <ImageWrapped
                         onClick={() => basketStore.addProductAmount(productItem.id)}
                         className="relative flex border-2 border-pageBlack cursor-pointer"

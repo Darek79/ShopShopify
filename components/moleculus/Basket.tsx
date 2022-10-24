@@ -9,9 +9,8 @@ function Basket(): JSX.Element {
     return (
         <div className="pt-5 grid gap-y-3">
             {basketStore.productsArray.map(el => (
-                <BasketItem key={el.gid} productItem={el} />
+                <BasketItem key={el.merchandiseId} productItem={el} />
             ))}
-            <>{console.log(toJS(basketStore.productsArray))}</>
         </div>
     );
 }

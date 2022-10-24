@@ -26,6 +26,7 @@ export { default as Basket } from './moleculus/Basket';
 export { default as BasketItem } from './moleculus/BasketItem';
 export { default as BasketItemImage } from './moleculus/BasketItemImage';
 export { default as BasketTotalSum } from './moleculus/BasketTotalSum';
+export { default as CheckoutRedirectButton } from './moleculus/CheckoutRedirectButton';
 
 //Organism
 

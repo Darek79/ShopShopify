@@ -177,6 +177,13 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
                       currencyCode
                     }
                   }
+                  variants(first: 1) {
+                    edges {
+                      node {
+                        id
+                      }
+                    }
+                  }
                 }
               }
             }
