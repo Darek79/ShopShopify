@@ -109,7 +109,7 @@ const Home: NextPage<HomepageI> = ({ topProducts, middleProducts, sliderProducts
                 <PageSplitter h2Content="Best Seller" pContent="Phasellus faucibus non libero" />
                 <ImageSlider buttonOnMobile slideArray={sliderProducts} />
             </main>
-            <footer className="max-w-screen-2xl w-full defaultPageContentOnGrid pt-10">
+            <footer className="max-w-screen-2xl w-full defaultPageContentOnGrid pt-10 pb-5">
                 <Footer />
             </footer>
         </PageWrapper>

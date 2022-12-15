@@ -1,8 +1,5 @@
-import { LogoSVG, SearchIconSVG, UserSVG, ShoppingBagSVG, HamburgerSVG, NavigationCategory } from 'components';
+import { LogoSVG, SearchIconSVG, UserSVG, ShoppingBagSVG, HamburgerSVG } from 'components';
 import { memo } from 'react';
-// interface NavigationI {}
-
-const categoryPages = ['category', 'category', 'category', 'category', 'category'];
 
 export default memo(function Navigation(): JSX.Element {
     return (

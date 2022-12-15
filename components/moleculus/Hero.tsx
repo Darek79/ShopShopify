@@ -7,9 +7,7 @@ import img1 from 'public/bag-slide1.jpg';
 import img2 from 'public/bag-slide2.jpg';
 import img3 from 'public/bag-slide3.jpg';
 import { sliderVariant, transitionSlider, headerVariant } from 'Variants/variants';
-// interface HeroI{
 
-// }
 interface ImageArrayI {
     img: StaticImageData;
     title?: string;

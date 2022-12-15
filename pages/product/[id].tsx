@@ -190,7 +190,6 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
           }`,
     });
 
-    // console.log(products, 'PAGE DATA');
     return {
         props: { products: products.edges[0].node },
     };

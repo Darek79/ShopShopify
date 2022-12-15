@@ -43,8 +43,3 @@ export default function NavigationCategory({ navigationArr }: NavigationCategory
         </nav>
     );
 }
-// hidden group-hover:block
-// top-[76px]
-{
-    /* <div className="h-0 z-[9999] opacity-0 origin-top transform duration-300 group-hover:opacity-100 group-hover:scale-100 w-full lg:max-w-[1000px] group-hover:h-[400px] absolute left-0 lg:left-[10%] top-[84px] bg-blue-200"> */
-}

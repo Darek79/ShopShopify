@@ -16,11 +16,12 @@ function CheckoutRedirectButton(): JSX.Element {
                 body: JSON.stringify(basketStore.lineItem),
             })
                 .then(res => res.json())
-                .then(d => {
-                    if (d.error) {
+                .then(checkoutURL => {
+                    if (checkoutURL.error) {
+                        //HERE ERROR BOUNDRY NEED TO BE ADDED
                         return;
                     }
-                    window.location.href = d.url;
+                    window.location.href = checkoutURL.url;
                 });
         }
     }, [basketStore, basketStore.start]);

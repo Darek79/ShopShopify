@@ -3,8 +3,6 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { m, AnimatePresence, useSpring } from 'framer-motion';
 import type { EdgesEntity } from 'Types/Products';
 
-// const slideArray = [10, 20, 30, 40, 50, 60, 70, 80];
-
 interface ImageSliderI {
     buttonOnMobile?: boolean;
     slideArray: EdgesEntity[];

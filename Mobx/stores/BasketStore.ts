@@ -117,6 +117,7 @@ class Basket implements BasketI {
         }, 5000);
     }
     async getLineItems() {
+        console.log('test');
         if (!this.start) {
             runInAction(() => {
                 this.start = true;

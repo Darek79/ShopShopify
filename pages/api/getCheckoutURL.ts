@@ -12,6 +12,7 @@ type Data = {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     const lineItems: LineItems[] = req.body;
+    console.log('loadload');
     try {
         const urlData: RequestReturn<CHECKOUT_URL> = await storefrontClient.query({
             data: {
@@ -36,6 +37,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             res.status(200).json({ url: urlData.body.data.cartCreate.cart.checkoutUrl, error: '' });
         }
     } catch (error) {
-        if (error) console.log(error);
+        if (error) {
+            res.status(403).json({ url: '', error: 'Something went wrong' });
+        }
     }
 }

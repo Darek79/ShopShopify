@@ -32,8 +32,3 @@ export default function FooterItem({ title, children }: FooterItemI): JSX.Elemen
         </div>
     );
 }
-// const wrapperClasses = classname({
-//     'transformDefault overflow-hidden origin-bottom z-[5] text-xs uppercase': true,
-//     'h-5 -translate-y-full opacity-0': !state,
-//     'h-fit py-5 opacity-100 translate-y-3 delay-200': state,
-// });
